@@ -61,7 +61,7 @@ export const ForestBackground: React.FC<ForestBackgroundProps> = ({
   const elements = floatingElements[variant];
 
   return (
-    <div className={`relative min-h-screen ${backgrounds[variant]} overflow-hidden`}>
+    <div className={`relative w-full min-h-screen ${backgrounds[variant]} overflow-hidden`}>
       {/* 浮动元素背景 */}
       <div className="absolute inset-0 pointer-events-none">
         {elements.map((elem, i) => (
