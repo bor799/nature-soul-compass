@@ -1,68 +1,179 @@
+/* ========================================
+   沉浸森林主题 - 山野灵感罗盘
+   ======================================== */
+
+@import 'tailwindcss';
+
+/* CSS 变量系统 */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* 基础色调 */
+  --forest-green: #228B22;
+  --forest-dark: #1a5c1a;
+  --forest-light: #3da73d;
+  --earth-brown: #8B4513;
+  --sky-blue: #87CEEB;
+  --sand-beige: #F5F5DC;
+  --cream-bg: #FAF9F6;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* 强调色 */
+  --sunshine-orange: #F97316;
+  --river-teal: #0D9488;
+  --leaf-yellow: #EAB308;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* 移动端字体大小 */
+  --mobile-title: 28px;
+  --mobile-subtitle: 20px;
+  --mobile-body: 16px;
+  --mobile-caption: 14px;
+  --mobile-mini: 12px;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  /* 触摸友好 */
+  --touch-target: 48px;
+  --button-height: 52px;
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  /* 中性色 */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a5568;
+  --border-subtle: rgba(34, 139, 34, 0.1);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* 基础样式重置 */
+@layer base {
+  * {
+    @apply touch-manipulation;
   }
-  a:hover {
-    color: #747bff;
+
+  html {
+    @apply scroll-smooth;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    @apply text-base antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Roboto', 'sans-serif';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
   }
+
+  /* 确保触摸区域足够大 */
+  button,
+  a,
+  [role='button'],
+  .clickable {
+    min-height: var(--touch-target);
+    min-width: var(--touch-target);
+  }
+
+  /* 焦点样式 */
+  button:focus-visible,
+  a:focus-visible,
+  [role='button']:focus-visible {
+    @apply outline-none ring-2 ring-forest-green ring-offset-2;
+  }
+
+  /* 选择文字样式 */
+  ::selection {
+    @apply bg-forest-200;
+  }
+}
+
+/* 移动端优化 */
+@layer utilities {
+  /* 安全区域适配 */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* 触摸区域助手 */
+  .touch-safe {
+    min-height: var(--touch-target);
+    min-width: var(--touch-target);
+  }
+
+  /* 文字截断 */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* 动画优化 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-earth-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-earth-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-earth-400;
+}
+
+/* 森林主题背景效果 */
+.forest-texture {
+  position: relative;
+}
+
+.forest-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 阶段主题背景 */
+.theme-landing {
+  background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.theme-mbti {
+  background: linear-gradient(180deg, #166534 0%, #14532d 100%);
+  color: white;
+}
+
+.theme-survival {
+  background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.theme-calculating {
+  background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+}
+
+.theme-results {
+  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
 }

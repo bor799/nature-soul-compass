@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-earth-50 text-earth-900;
+    @apply text-earth-900;
   }
 }
 

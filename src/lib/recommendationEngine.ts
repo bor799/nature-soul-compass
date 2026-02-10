@@ -45,7 +45,34 @@ function calculateMBTIMatch(
 }
 
 /**
- * 检查生存底线是否满足要求
+ * 计算生存要求差距（用于混合过滤模式）
+ * @param userTolerance - 用户耐受度
+ * @param requirements - 目的地最低要求
+ * @returns 差距对象（负数表示不满足，正数或0表示满足）
+ */
+function calculateSurvivalGap(
+  userTolerance: SurvivalTolerance,
+  requirements: { tolerance_toilet: number; tolerance_shower: number; tolerance_bugs: number; physical_fitness: number }
+): { toilet: number; shower: number; bugs: number; fitness: number; total: number } {
+  const toiletGap = requirements.tolerance_toilet - userTolerance.toilet;
+  const showerGap = requirements.tolerance_shower - userTolerance.shower;
+  const bugsGap = requirements.tolerance_bugs - userTolerance.bugs;
+  const fitnessGap = requirements.physical_fitness - userTolerance.fitness;
+
+  // 只计算正差距（不满足的部分）
+  const total = Math.max(0, toiletGap) + Math.max(0, showerGap) + Math.max(0, bugsGap) + Math.max(0, fitnessGap);
+
+  return {
+    toilet: toiletGap,
+    shower: showerGap,
+    bugs: bugsGap,
+    fitness: fitnessGap,
+    total
+  };
+}
+
+/**
+ * 检查生存底线是否满足要求（保留用于兼容）
  * @param userTolerance - 用户耐受度
  * @param requirements - 目的地最低要求
  * @returns 是否满足要求
@@ -184,10 +211,16 @@ export function calculateRecommendations(
   const scores: RecommendationScore[] = [];
 
   for (const destination of destinations) {
-    // 硬性过滤：检查生存底线
-    if (!checkSurvivalRequirements(userTolerance, destination.survival_requirements)) {
+    // 混合过滤模式：计算生存要求差距
+    const survivalGap = calculateSurvivalGap(userTolerance, destination.survival_requirements);
+
+    // 严重不满足（差距 > 1）：直接排除
+    if (survivalGap.total > 1) {
       continue;
     }
+
+    // 轻微不满足（差距 ≤ 1）：降权处理（每差距 1 级扣 30% 分）
+    // 这个惩罚会在总分计算时应用
 
     // 1. MBTI 契合度 (40%)
     const mbtiMatch = calculateMBTIMatch(userMBTI, userScores, destination.mbti_affinity as unknown as { [key: string]: number });
@@ -211,12 +244,18 @@ export function calculateRecommendations(
     }
 
     // 计算总分
-    const totalScore =
+    let totalScore =
       mbtiMatch * 0.4 +
       survivalMatch * 0.3 +
       maturationBonus * 0.15 +
       instagramBonus * 0.1 +
       socialPenalty * 0.05;
+
+    // 应用生存差距降权：轻微不满足时每差距 1 级扣 30% 分
+    if (survivalGap.total > 0) {
+      const penalty = survivalGap.total * 0.3;
+      totalScore *= (1 - penalty);
+    }
 
     scores.push({
       destination_id: destination.id,

@@ -20,7 +20,7 @@ export function calculateMBTIType(answers: Map<string, MBTIDimension>): MBTIType
 
   // 确定每个维度的结果
   const ie = scores.I >= scores.E ? 'I' : 'E';
-  const ns = scores.N >= scores.N ? 'N' : 'S';
+  const ns = scores.N >= scores.S ? 'N' : 'S';  // 修复：正确比较 N 和 S 得分
   const tf = scores.T >= scores.F ? 'T' : 'F';
   const jp = scores.J >= scores.P ? 'J' : 'P';
 

@@ -1,12 +1,13 @@
 import { create } from 'zustand';
-import type { QuizState, MBTIDimension, ToleranceLevel, SurvivalCategory, QuizStage } from '../lib/types';
+import type { QuizState, MBTIDimension, ToleranceLevel, SurvivalCategory, QuizStage, Destination } from '../lib/types';
 import { mbtiQuestions } from '../data/mbtiQuestions';
 import { survivalQuestions } from '../data/survivalQuestions';
 import destinationsData from '../../data/destinations.json';
 import { calculateMBTIType, calculateMBTIScores } from '../lib/quizEngine';
 import { generateQuizResult } from '../lib/recommendationEngine';
 
-const destinations = destinationsData.destinations as any;
+// 类型安全的数据导入 - 需要类型断言因为 JSON 数据的类型更宽泛
+const destinations: Destination[] = destinationsData.destinations as Destination[];
 
 interface QuizStore extends QuizState {
   // Internal state
