@@ -76,6 +76,14 @@ export interface SurvivalRequirements {
   physical_fitness: ToleranceLevel;
 }
 
+export interface DestinationRecommendation {
+  score: number;              // 推荐指数 1-10
+  reason: string;             // 详细推荐理由
+  best_for: string[];         // 适合人群标签
+  experience: string;         // 体验亮点
+  tips?: string[];           // 实用贴士
+}
+
 export interface Destination {
   id: string;
   name: string;
@@ -95,6 +103,7 @@ export interface Destination {
   description: string;
   best_season: Season[];
   tags: string[];
+  recommendation?: DestinationRecommendation;
 }
 
 // ==================== 推荐结果类型 ====================
