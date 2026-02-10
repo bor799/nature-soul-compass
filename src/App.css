@@ -1,9 +1,5 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+/* App.css - 清理不必要的样式，让 Flexbox 处理居中 */
+/* 居中现在由 index.css 的 body 和 #root 样式处理 */
 
 .logo {
   height: 6em;

@@ -6,17 +6,17 @@ interface RatingStarsProps {
 
 export function RatingStars({ rating, max = 5, size = 'md' }: RatingStarsProps) {
   const sizeStyles = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6'
+    sm: 'w-5 h-5',  // 增大尺寸以改善触摸体验
+    md: 'w-6 h-6',
+    lg: 'w-7 h-7'
   };
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center justify-center gap-1.5">
       {[...Array(max)].map((_, i) => (
         <svg
           key={i}
-          className={`${sizeStyles[size]} ${
+          className={`${sizeStyles[size]} flex-shrink-0 ${
             i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-earth-300 fill-earth-300'
           }`}
           viewBox="0 0 20 20"

@@ -43,7 +43,7 @@ export function ResultsPage() {
   return (
     <ForestBackground variant="results">
       <CenteredCard maxWidth="lg">
-        <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-5 sm:space-y-6 px-4 sm:px-0">
           {/* 性格总结 */}
           <ScaleIn>
             <Card className="text-center bg-white/90 backdrop-blur-sm border-amber-200 overflow-hidden relative">
@@ -185,21 +185,21 @@ export function ResultsPage() {
                           )}
 
                           {/* 关键指标 */}
-                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-                            <div className="bg-earth-50 rounded-lg p-2 text-center">
-                              <div className="text-xs text-earth-500 mb-1">难度</div>
+                          <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-4">
+                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
+                              <div className="text-sm text-earth-600 mb-2 font-medium">难度等级</div>
                               <RatingStars rating={dest.difficulty_level} size="sm" />
                             </div>
-                            <div className="bg-earth-50 rounded-lg p-2 text-center">
-                              <div className="text-xs text-earth-500 mb-1">出片率</div>
+                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
+                              <div className="text-sm text-earth-600 mb-2 font-medium">出片率</div>
                               <RatingStars rating={dest.instagrammability} size="sm" />
                             </div>
-                            <div className="bg-earth-50 rounded-lg p-2 text-center">
-                              <div className="text-xs text-earth-500 mb-1">卫生</div>
+                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
+                              <div className="text-sm text-earth-600 mb-2 font-medium">卫生评分</div>
                               <RatingStars rating={dest.hygiene_score} size="sm" />
                             </div>
-                            <div className="bg-earth-50 rounded-lg p-2 text-center">
-                              <div className="text-xs text-earth-500 mb-1">成熟度</div>
+                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
+                              <div className="text-sm text-earth-600 mb-2 font-medium">成熟度</div>
                               <RatingStars rating={dest.maturation} size="sm" />
                             </div>
                           </div>

@@ -16,8 +16,8 @@ export function CenteredCard({
   };
 
   return (
-    <div className={`min-h-screen flex items-center justify-center px-4 py-8 sm:py-12 ${className}`}>
-      <div className={`w-full ${maxWidthStyles[maxWidth]} mx-auto`}>
+    <div className={`min-h-screen flex items-center justify-center px-4 sm:px-6 py-6 sm:py-8 ${className}`}>
+      <div className={`w-full ${maxWidthStyles[maxWidth]} mx-auto text-center`}>
         {children}
       </div>
     </div>
