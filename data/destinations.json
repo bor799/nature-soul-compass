@@ -1,0 +1,514 @@
+{
+  "destinations": [
+    {
+      "id": "hutiaoxia-half",
+      "name": "虎跳峡高路（半程版）",
+      "location": "云南·丽江",
+      "duration_days": 2,
+      "difficulty_level": 2,
+      "scenery_types": ["峡谷", "雪山", "江景"],
+      "hygiene_score": 4,
+      "period_friendliness": 5,
+      "instagrammability": 5,
+      "social_pressure": 2,
+      "crowd_level": 3,
+      "maturation": 5,
+      "mbti_affinity": {
+        "I": 0.4, "E": 0.6,
+        "N": 0.5, "S": 0.5,
+        "T": 0.3, "F": 0.7,
+        "J": 0.7, "P": 0.3
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "世界十大经典徒步路线",
+        "沿途客栈设施成熟，有独立卫浴",
+        "路迹清晰，无需担心迷路"
+      ],
+      "description": "适合进阶小白的入门级选择，风景壮丽但舒适度高。金沙江峡谷景色震撼，玉龙雪山哈巴雪山夹江对峙。",
+      "best_season": ["春季", "秋季"],
+      "tags": ["入门首选", "摄影圣地", "设施完善"]
+    },
+    {
+      "id": "yubeng-village",
+      "name": "雨崩村（常规线）",
+      "location": "云南·德钦",
+      "duration_days": 3,
+      "difficulty_level": 3,
+      "scenery_types": ["雪山", "冰川", "森林"],
+      "hygiene_score": 3,
+      "period_friendliness": 3,
+      "instagrammability": 5,
+      "social_pressure": 2,
+      "crowd_level": 3,
+      "maturation": 4,
+      "mbti_affinity": {
+        "I": 0.5, "E": 0.5,
+        "N": 0.6, "S": 0.4,
+        "T": 0.4, "F": 0.6,
+        "J": 0.5, "P": 0.5
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 3
+      },
+      "highlights": [
+        "天堂在左，雨崩在右",
+        "近距离接触梅里雪山",
+        "神瀑、神湖、冰湖三条路线可选"
+      ],
+      "description": "朝圣梅里雪山的经典路线，藏族文化浓郁。高原徒步需要一定体能，但风景绝对震撼。",
+      "best_season": ["春季", "秋季"],
+      "tags": ["朝圣路线", "雪山圣地", "文化体验"]
+    },
+    {
+      "id": "wugong-mountain",
+      "name": "武功山（轻装版）",
+      "location": "江西·萍乡",
+      "duration_days": 2,
+      "difficulty_level": 2,
+      "scenery_types": ["高山草甸", "云海", "日出"],
+      "hygiene_score": 2,
+      "period_friendliness": 4,
+      "instagrammability": 5,
+      "social_pressure": 3,
+      "crowd_level": 4,
+      "maturation": 4,
+      "mbti_affinity": {
+        "I": 0.3, "E": 0.7,
+        "N": 0.4, "S": 0.6,
+        "T": 0.3, "F": 0.7,
+        "J": 0.4, "P": 0.6
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 1,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "万亩高山草甸云海",
+        "日出日落绝美",
+        "帐篷氛围浓厚，社交属性强"
+      ],
+      "description": "网红徒步圣地，云海草甸风光绝美。轻装入住山顶客栈，适合拍照社交。",
+      "best_season": ["夏季", "秋季"],
+      "tags": ["网红路线", "云海草甸", "社交氛围"]
+    },
+    {
+      "id": "daocheng-yading-short",
+      "name": "稻城亚丁（短线）",
+      "location": "四川·甘孜",
+      "duration_days": 2,
+      "difficulty_level": 3,
+      "scenery_types": ["雪山", "海子", "草甸"],
+      "hygiene_score": 3,
+      "period_friendliness": 4,
+      "instagrammability": 5,
+      "social_pressure": 2,
+      "crowd_level": 4,
+      "maturation": 4,
+      "mbti_affinity": {
+        "I": 0.6, "E": 0.4,
+        "N": 0.7, "S": 0.3,
+        "T": 0.4, "F": 0.6,
+        "J": 0.6, "P": 0.4
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "水蓝色星球的最后一片净土",
+        "三座神山：仙乃日、央迈勇、夏诺多吉",
+        "牛奶海、五色海圣湖"
+      ],
+      "description": "高原圣地，藏族文化浓厚。短线难度适中，适合进阶小白体验高原徒步。",
+      "best_season": ["秋季"],
+      "tags": ["高原圣地", "三神山", "摄影天堂"]
+    },
+    {
+      "id": "puzhehei",
+      "name": "云南普者黑",
+      "location": "云南·文山",
+      "duration_days": 2,
+      "difficulty_level": 1,
+      "scenery_types": ["喀斯特", "湖泊", "荷花"],
+      "hygiene_score": 5,
+      "period_friendliness": 5,
+      "instagrammability": 4,
+      "social_pressure": 2,
+      "crowd_level": 3,
+      "maturation": 4,
+      "mbti_affinity": {
+        "I": 0.4, "E": 0.6,
+        "N": 0.3, "S": 0.7,
+        "T": 0.2, "F": 0.8,
+        "J": 0.5, "P": 0.5
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 1,
+        "tolerance_shower": 1,
+        "tolerance_bugs": 2,
+        "physical_fitness": 1
+      },
+      "highlights": [
+        "爸爸去哪儿拍摄地",
+        "喀斯特山水田园风光",
+        "夏季万亩荷花盛开"
+      ],
+      "description": "轻松舒适的田园徒步，住宿条件极佳。适合追求舒适度的进阶小白。",
+      "best_season": ["夏季", "秋季"],
+      "tags": ["轻松舒适", "田园风光", "适合全家"]
+    },
+    {
+      "id": "kanas",
+      "name": "新疆喀纳斯",
+      "location": "新疆·阿勒泰",
+      "duration_days": 3,
+      "difficulty_level": 3,
+      "scenery_types": ["湖泊", "森林", "雪山"],
+      "hygiene_score": 3,
+      "period_friendliness": 4,
+      "instagrammability": 5,
+      "social_pressure": 2,
+      "crowd_level": 3,
+      "maturation": 4,
+      "mbti_affinity": {
+        "I": 0.6, "E": 0.4,
+        "N": 0.5, "S": 0.5,
+        "T": 0.6, "F": 0.4,
+        "J": 0.6, "P": 0.4
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "东方瑞士，神的后花园",
+        "喀纳斯湖变色奇观",
+        "图瓦人村落文化"
+      ],
+      "description": "北疆最经典的徒步路线，四季风光各异。湖光山色美不胜收。",
+      "best_season": ["秋季"],
+      "tags": ["北疆风光", "变色神湖", "图瓦文化"]
+    },
+    {
+      "id": "aershan",
+      "name": "内蒙古阿尔山",
+      "location": "内蒙古·兴安盟",
+      "duration_days": 2,
+      "difficulty_level": 2,
+      "scenery_types": ["火山", "天池", "森林"],
+      "hygiene_score": 4,
+      "period_friendliness": 4,
+      "instagrammability": 4,
+      "social_pressure": 1,
+      "crowd_level": 2,
+      "maturation": 4,
+      "mbti_affinity": {
+        "I": 0.7, "E": 0.3,
+        "N": 0.4, "S": 0.6,
+        "T": 0.3, "F": 0.7,
+        "J": 0.5, "P": 0.5
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "火山天池群",
+        "大兴安岭秋色",
+        "温泉资源丰富"
+      ],
+      "description": "人少景美的隐秘路线，火山地貌独特。秋色层林尽染，美不胜收。",
+      "best_season": ["秋季"],
+      "tags": ["火山地貌", "人少景美", "温泉疗愈"]
+    },
+    {
+      "id": "yangzhuoyongcuo",
+      "name": "西藏羊卓雍措",
+      "location": "西藏·山南",
+      "duration_days": 2,
+      "difficulty_level": 3,
+      "scenery_types": ["圣湖", "雪山", "河谷"],
+      "hygiene_score": 2,
+      "period_friendliness": 3,
+      "instagrammability": 5,
+      "social_pressure": 2,
+      "crowd_level": 2,
+      "maturation": 3,
+      "mbti_affinity": {
+        "I": 0.7, "E": 0.3,
+        "N": 0.7, "S": 0.3,
+        "T": 0.6, "F": 0.4,
+        "J": 0.7, "P": 0.3
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 3
+      },
+      "highlights": [
+        "西藏三大圣湖之一",
+        "湖水颜色变幻莫测",
+        "藏族转湖文化"
+      ],
+      "description": "高原圣湖转湖路线，藏文化浓厚。需要一定体能适应高原。",
+      "best_season": ["夏季", "秋季"],
+      "tags": ["圣湖转湖", "藏族文化", "高原挑战"]
+    },
+    {
+      "id": "siguniang-dafeng",
+      "name": "四姑娘山（大峰）",
+      "location": "四川·阿坝",
+      "duration_days": 3,
+      "difficulty_level": 3,
+      "scenery_types": ["雪山", "峡谷", "草甸"],
+      "hygiene_score": 3,
+      "period_friendliness": 4,
+      "instagrammability": 5,
+      "social_pressure": 3,
+      "crowd_level": 3,
+      "maturation": 5,
+      "mbti_affinity": {
+        "I": 0.4, "E": 0.6,
+        "N": 0.5, "S": 0.5,
+        "T": 0.6, "F": 0.4,
+        "J": 0.7, "P": 0.3
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 3
+      },
+      "highlights": [
+        "东方阿尔卑斯山",
+        "人生第一座5000米雪山",
+        "大峰、二峰、三峰可选"
+      ],
+      "description": "入门级雪山攀登，有向导协助。登顶成就感极强，技术含量适中。",
+      "best_season": ["秋季"],
+      "tags": ["雪山攀登", "人生首峰", "成就感强"]
+    },
+    {
+      "id": "qinghai-lake",
+      "name": "青海湖环湖",
+      "location": "青海·海南",
+      "duration_days": 3,
+      "difficulty_level": 2,
+      "scenery_types": ["湖泊", "草原", "花海"],
+      "hygiene_score": 4,
+      "period_friendliness": 5,
+      "instagrammability": 4,
+      "social_pressure": 2,
+      "crowd_level": 3,
+      "maturation": 5,
+      "mbti_affinity": {
+        "I": 0.5, "E": 0.5,
+        "N": 0.4, "S": 0.6,
+        "T": 0.5, "F": 0.5,
+        "J": 0.7, "P": 0.3
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "中国最大咸水湖",
+        "七月油菜花海",
+        "藏传佛教圣地"
+      ],
+      "description": "成熟安全的环湖路线，设施完善。路况平缓，适合进阶小白。",
+      "best_season": ["夏季"],
+      "tags": ["成熟路线", "油菜花海", "安全舒适"]
+    },
+    {
+      "id": "lijiang-river",
+      "name": "桂林漓江",
+      "location": "广西·桂林",
+      "duration_days": 2,
+      "difficulty_level": 1,
+      "scenery_types": ["喀斯特", "江景", "田园"],
+      "hygiene_score": 5,
+      "period_friendliness": 5,
+      "instagrammability": 5,
+      "social_pressure": 2,
+      "crowd_level": 3,
+      "maturation": 5,
+      "mbti_affinity": {
+        "I": 0.3, "E": 0.7,
+        "N": 0.3, "S": 0.7,
+        "T": 0.2, "F": 0.8,
+        "J": 0.4, "P": 0.6
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 1,
+        "tolerance_shower": 1,
+        "tolerance_bugs": 2,
+        "physical_fitness": 1
+      },
+      "highlights": [
+        "桂林山水甲天下",
+        "九马画山、黄布倒影",
+        "20元人民币背景图"
+      ],
+      "description": "轻松舒适的江边徒步，风景如画。住宿条件极佳，适合追求舒适度。",
+      "best_season": ["春季", "秋季"],
+      "tags": ["轻松舒适", "山水画卷", "适合全家"]
+    },
+    {
+      "id": "huangshan-light",
+      "name": "黄山（轻装）",
+      "location": "安徽·黄山",
+      "duration_days": 2,
+      "difficulty_level": 2,
+      "scenery_types": ["奇松", "怪石", "云海"],
+      "hygiene_score": 4,
+      "period_friendliness": 4,
+      "instagrammability": 5,
+      "social_pressure": 2,
+      "crowd_level": 4,
+      "maturation": 5,
+      "mbti_affinity": {
+        "I": 0.4, "E": 0.6,
+        "N": 0.6, "S": 0.4,
+        "T": 0.5, "F": 0.5,
+        "J": 0.5, "P": 0.5
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "五岳归来不看山，黄山归来不看岳",
+        "奇松怪石云海温泉",
+        "山顶酒店设施完善"
+      ],
+      "description": "世界文化与自然双遗产，设施成熟。轻装入住山顶酒店，适合进阶小白。",
+      "best_season": ["春季", "秋季"],
+      "tags": ["世界遗产", "云海奇观", "设施完善"]
+    },
+    {
+      "id": "three-gorges",
+      "name": "三峡徒步",
+      "location": "湖北·宜昌",
+      "duration_days": 3,
+      "difficulty_level": 3,
+      "scenery_types": ["峡谷", "江景", "古迹"],
+      "hygiene_score": 3,
+      "period_friendliness": 4,
+      "instagrammability": 4,
+      "social_pressure": 2,
+      "crowd_level": 3,
+      "maturation": 4,
+      "mbti_affinity": {
+        "I": 0.5, "E": 0.5,
+        "N": 0.6, "S": 0.4,
+        "T": 0.6, "F": 0.4,
+        "J": 0.6, "P": 0.4
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 3
+      },
+      "highlights": [
+        "长江三峡史诗级风光",
+        "三国文化遗迹",
+        "瞿塘峡、巫峡、西陵峡"
+      ],
+      "description": "长江三峡经典徒步，历史文化厚重。需要一定体能，体验感极佳。",
+      "best_season": ["春季", "秋季"],
+      "tags": ["史诗路线", "历史文化", "峡谷风光"]
+    },
+    {
+      "id": "jiankou-greatwall",
+      "name": "北京箭扣长城",
+      "location": "北京·怀柔",
+      "duration_days": 1,
+      "difficulty_level": 4,
+      "scenery_types": ["长城", "山景", "险峻"],
+      "hygiene_score": 2,
+      "period_friendliness": 3,
+      "instagrammability": 5,
+      "social_pressure": 3,
+      "crowd_level": 3,
+      "maturation": 3,
+      "mbti_affinity": {
+        "I": 0.5, "E": 0.5,
+        "N": 0.5, "S": 0.5,
+        "T": 0.7, "F": 0.3,
+        "J": 0.4, "P": 0.6
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 3,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 3,
+        "physical_fitness": 4
+      },
+      "highlights": [
+        "最险峻野性的一段长城",
+        "鹰飞倒仰等惊险路段",
+        "摄影发烧友最爱"
+      ],
+      "description": "野长城探险，刺激惊险。需要较好体能和胆量，不适合恐高者。",
+      "best_season": ["春季", "秋季"],
+      "tags": ["野长城", "刺激惊险", "摄影圣地"]
+    },
+    {
+      "id": "shenxianju",
+      "name": "浙江神仙居",
+      "location": "浙江·台州",
+      "duration_days": 1,
+      "difficulty_level": 2,
+      "scenery_types": ["奇峰", "云海", "瀑布"],
+      "hygiene_score": 4,
+      "period_friendliness": 5,
+      "instagrammability": 5,
+      "social_pressure": 1,
+      "crowd_level": 3,
+      "maturation": 5,
+      "mbti_affinity": {
+        "I": 0.7, "E": 0.3,
+        "N": 0.7, "S": 0.3,
+        "T": 0.3, "F": 0.7,
+        "J": 0.4, "P": 0.6
+      },
+      "survival_requirements": {
+        "tolerance_toilet": 2,
+        "tolerance_shower": 2,
+        "tolerance_bugs": 2,
+        "physical_fitness": 2
+      },
+      "highlights": [
+        "天然观音佛光",
+        "如意桥网红打卡点",
+        "李白梦游天姥吟留别地"
+      ],
+      "description": "仙境般的自然风光，设施完善。轻松舒适，适合进阶小白。",
+      "best_season": ["春季", "秋季"],
+      "tags": ["仙境秘境", "网红打卡", "轻松舒适"]
+    }
+  ]
+}

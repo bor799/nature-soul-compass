@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-earth-50 text-earth-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-forest-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-forest-700 transition-colors;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-forest-600 to-forest-800 bg-clip-text text-transparent;
+  }
+}
