@@ -18,9 +18,9 @@ export function RatingBar({
   size = 'md'
 }: RatingBarProps) {
   const colorClasses = {
-    primary: 'bg-primary',
-    accent: 'bg-accent',
-    leaf: 'bg-leaf-600',
+    primary: 'bg-forest-600',
+    accent: 'bg-magic-gold',
+    leaf: 'bg-forest-500',
     sky: 'bg-sky-500',
   };
 
@@ -34,17 +34,27 @@ export function RatingBar({
     md: 'text-sm',
   };
 
+  const labelColorClasses = {
+    sm: 'text-cream-100 opacity-80',
+    md: 'text-cream-100 opacity-90',
+  };
+
+  const valueColorClasses = {
+    sm: 'text-magic-gold font-semibold',
+    md: 'text-magic-gold font-semibold',
+  };
+
   const percentage = Math.min((value / max) * 100, 100);
 
   return (
     <div className="w-full">
       {label && (
-        <div className={`${textSizeClasses[size]} text-earth-600 mb-2 font-medium`}>
+        <div className={`${textSizeClasses[size]} ${labelColorClasses[size]} mb-2 font-medium`}>
           {label}
         </div>
       )}
       <div className="flex items-center gap-3">
-        <div className="flex-1 bg-gray-200 rounded-full overflow-hidden">
+        <div className="flex-1 bg-white/10 rounded-full overflow-hidden">
           <motion.div
             className={`${heightClasses[size]} ${colorClasses[color]} rounded-full transition-all duration-300`}
             initial={{ width: 0 }}
@@ -53,7 +63,7 @@ export function RatingBar({
           />
         </div>
         {showValue && (
-          <span className={`${textSizeClasses[size]} font-semibold text-earth-900 min-w-[2rem] text-right`}>
+          <span className={`${valueColorClasses[size]} min-w-[2rem] text-right`}>
             {value.toFixed(1)}
           </span>
         )}

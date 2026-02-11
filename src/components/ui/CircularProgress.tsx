@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 interface CircularProgressProps {
   value: number; // 0-100
   size?: number;
@@ -21,25 +23,25 @@ export function CircularProgress({
   const offset = circumference - (normalizedValue / 100) * circumference;
 
   return (
-    <div className={`inline-flex items-center justify-center ${className}`}>
+    <div className={`inline-flex items-center justify-center relative ${className}`}>
       <svg width={size} height={size} className="transform -rotate-90">
         {/* Background circle */}
         <circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#e5e7eb"
+          stroke="rgba(255, 255, 255, 0.1)"
           strokeWidth={strokeWidth}
           fill="none"
         />
         {/* Progress circle with gradient */}
         <defs>
           <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#40836e" />
-            <stop offset="100%" stopColor="#50a286" />
+            <stop offset="0%" stopColor="#FFD700" />
+            <stop offset="100%" stopColor="#FFF7B0" />
           </linearGradient>
         </defs>
-        <circle
+        <motion.circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
@@ -49,13 +51,15 @@ export function CircularProgress({
           strokeDasharray={circumference}
           strokeDashoffset={offset}
           strokeLinecap="round"
-          className="transition-all duration-500 ease-out"
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset: offset }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         />
       </svg>
       {showLabel && (
-        <div className="absolute flex flex-col items-center justify-center">
-          <span className="text-xl font-bold text-forest-700">{Math.round(normalizedValue)}%</span>
-          {label && <span className="text-xs text-earth-600">{label}</span>}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-xl font-bold text-magic-gold">{Math.round(normalizedValue)}%</span>
+          {label && <span className="text-xs text-cream-100 opacity-80">{label}</span>}
         </div>
       )}
     </div>

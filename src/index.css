@@ -1,24 +1,26 @@
 /* ========================================
-   沉浸森林主题 - 山野灵感罗盘
+   山野灵感罗盘 - 新设计系统全局样式
    ======================================== */
+
+/* 引入 Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
 
 @import 'tailwindcss';
 
-/* CSS 变量系统 */
+/* CSS 变量系统 - 新设计规范 */
 :root {
-  /* 基础色调 */
-  --forest-green: #228B22;
-  --forest-dark: #1a5c1a;
-  --forest-light: #3da73d;
-  --earth-brown: #8B4513;
-  --sky-blue: #87CEEB;
-  --sand-beige: #F5F5DC;
-  --cream-bg: #FAF9F6;
+  /* 森林色系 */
+  --forest-dark: #0f3e21;
+  --forest-light: #1a5c38;
+  --forest-glass: rgba(255, 255, 255, 0.08);
 
-  /* 强调色 */
-  --sunshine-orange: #F97316;
-  --river-teal: #0D9488;
-  --leaf-yellow: #EAB308;
+  /* 魔法色系 */
+  --magic-gold: #FFD700;
+  --magic-glow: #FFF7B0;
+
+  /* 奶色文字系 */
+  --cream-primary: #F0FDF4;
+  --cream-secondary: rgba(240, 253, 244, 0.8);
 
   /* 移动端字体大小 */
   --mobile-title: 28px;
@@ -30,11 +32,6 @@
   /* 触摸友好 */
   --touch-target: 48px;
   --button-height: 52px;
-
-  /* 中性色 */
-  --text-primary: #1a1a1a;
-  --text-secondary: #4a5568;
-  --border-subtle: rgba(34, 139, 34, 0.1);
 }
 
 /* 基础样式重置 */
@@ -49,13 +46,15 @@
 
   body {
     @apply text-base antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Roboto', 'sans-serif';
+    font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     width: 100%;
+    /* 防止 iOS 橡皮筋效果 */
+    overscroll-behavior-y: none;
   }
 
   /* 确保 #root 占满全屏 */
@@ -77,17 +76,22 @@
   button:focus-visible,
   a:focus-visible,
   [role='button']:focus-visible {
-    @apply outline-none ring-2 ring-forest-green ring-offset-2;
+    @apply outline-none ring-2 ring-magic-gold ring-offset-2 ring-offset-forest-900;
   }
 
   /* 选择文字样式 */
   ::selection {
-    @apply bg-forest-200;
+    @apply bg-magic-gold text-forest-900;
   }
 }
 
-/* 移动端优化 */
-@layer utilities {
+/* 新设计系统 - 全局居中强制 */
+@layer components {
+  /* 强制所有内容居中 */
+  .force-center {
+    @apply text-center flex flex-col items-center justify-center;
+  }
+
   /* 安全区域适配 */
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
@@ -103,6 +107,56 @@
     min-width: var(--touch-target);
   }
 
+  /* 森林背景渐变 */
+  .bg-forest-gradient {
+    background: radial-gradient(circle at center, #1a5c38 0%, #0f3e21 100%);
+  }
+
+  /* 魔法文字发光 */
+  .text-magic-glow {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+
+  /* 玻璃卡片基础样式 */
+  .glass-base {
+    @apply bg-forest-glass backdrop-blur-md border border-white/15 rounded-glass;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+
+  /* 魔法按钮基础样式 */
+  .magic-btn-primary {
+    @apply bg-forest-900 border-2 border-magic-gold text-magic-gold rounded-magic;
+    @apply min-h-[48px] px-6 font-semibold;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.25);
+    transition: all 0.2s;
+  }
+
+  .magic-btn-primary:hover {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    transform: scale(1.02);
+  }
+
+  .magic-btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .magic-btn-active {
+    @apply bg-magic-gold text-forest-900;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  }
+
+  /* 奶色文字 */
+  .text-cream-primary {
+    @apply text-cream-50;
+  }
+
+  .text-cream-secondary {
+    @apply text-cream-100 opacity-80;
+  }
+}
+
+/* 移动端优化 */
+@layer utilities {
   /* 文字截断 */
   .line-clamp-2 {
     display: -webkit-box;
@@ -116,6 +170,15 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* 强制居中布局工具类 */
+  .layout-centered {
+    @apply min-h-screen flex items-center justify-center px-4;
+  }
+
+  .layout-max-width {
+    @apply w-full max-w-md mx-auto;
   }
 }
 
@@ -137,15 +200,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-earth-50;
+  background: rgba(15, 62, 33, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-earth-300 rounded-full;
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-earth-400;
+  background: rgba(255, 215, 0, 0.5);
 }
 
 /* 森林主题背景效果 */
@@ -163,24 +227,24 @@
   z-index: 0;
 }
 
-/* 阶段主题背景 */
+/* 阶段主题背景 - 使用新设计系统的渐变 */
 .theme-landing {
-  background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
+  background: radial-gradient(circle at center, #1a5c38 0%, #0f3e21 100%);
 }
 
 .theme-mbti {
-  background: linear-gradient(180deg, #166534 0%, #14532d 100%);
+  background: radial-gradient(circle at center, #1a5c38 0%, #0f3e21 100%);
   color: white;
 }
 
 .theme-survival {
-  background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+  background: radial-gradient(circle at center, #b45309 0%, #292524 100%);
 }
 
 .theme-calculating {
-  background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+  background: radial-gradient(circle at center, #1a5c38 0%, #0f3e21 100%);
 }
 
 .theme-results {
-  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
+  background: radial-gradient(circle at center, #b45309 0%, #292524 100%);
 }

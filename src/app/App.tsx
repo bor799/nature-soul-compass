@@ -1,5 +1,4 @@
 import { useQuizStore } from '@/core/store/quizStore';
-import { PageLayout } from '@/components/layout/PageLayout';
 import { LandingPage } from '@/pages/LandingPage';
 import { MBTIQuiz } from '@/pages/MBTIQuizPage';
 import { SurvivalTest } from '@/pages/SurvivalTestPage';
@@ -20,15 +19,13 @@ function App() {
   }, [stage]);
 
   return (
-    <PageLayout>
-      <PageTransition stage={stage} direction={direction}>
-        {stage === 'landing' && <LandingPage />}
-        {stage === 'mbti' && <MBTIQuiz />}
-        {stage === 'survival' && <SurvivalTest />}
-        {stage === 'calculating' && <Calculating />}
-        {stage === 'results' && <ResultsPage />}
-      </PageTransition>
-    </PageLayout>
+    <PageTransition stage={stage} direction={direction}>
+      {stage === 'landing' && <LandingPage />}
+      {stage === 'mbti' && <MBTIQuiz />}
+      {stage === 'survival' && <SurvivalTest />}
+      {stage === 'calculating' && <Calculating />}
+      {stage === 'results' && <ResultsPage />}
+    </PageTransition>
   );
 }
 
