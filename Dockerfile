@@ -17,8 +17,11 @@ FROM nginx:alpine
 # Copy build output to Nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose port
-EXPOSE 80
+# Copy custom nginx config
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-# Start Nginx
-CMD sh -c "nginx -g 'daemon off;'"
+# Expose port (will use PORT env var by AI Builder)
+EXPOSE 8000
+
+# Start Nginx with envsubst to replace ${PORT}
+CMD sh -c "envsubst '\$PORT' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
