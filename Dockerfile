@@ -1,27 +1,29 @@
-# Multi-stage build - Build stage
-FROM node:18-alpine AS builder
+# 阶段 1: 构建前端
+FROM node:18-alpine AS frontend-builder
+
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+COPY App.tsx components/ data/ index.html index.tsx lib/ metadata.json types.ts tsconfig.json vite.config.ts ./
+RUN npm run build
+
+# 阶段 2: Python 后端
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package.json ./
-RUN npm install
+# 安装后端依赖
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code and build
-COPY . .
-RUN npm run build
+# 复制后端代码
+COPY backend/app.py .
 
-# Production stage - Serve static files with Nginx
-FROM nginx:alpine
+# 从前端构建阶段复制构建产物
+COPY --from=frontend-builder /app/dist ./dist
 
-# Copy build output to Nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
+# 暴露端口
+EXPOSE 8000
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port
-EXPOSE 8080
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# 使用 shell form 确保 PORT 环境变量正确展开
+CMD sh -c "uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}"
