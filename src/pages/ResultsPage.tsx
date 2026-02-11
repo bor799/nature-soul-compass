@@ -1,13 +1,20 @@
-import { useQuizStore } from '../../store/quizStore';
-import { Card } from '../ui/Card';
-import { RatingStars } from '../ui/RatingStars';
-import { CircularProgress } from '../ui/CircularProgress';
-import { TouchSafeButton } from '../ui/TouchSafeButton';
-import { ForestBackground } from '../ui/ForestBackground';
-import { FadeIn, ScaleIn, StaggerIn } from '../layout/PageTransition';
-import { CenteredCard } from '../layout/CenteredCard';
-import destinationsData from '../../../data/destinations.json';
+import { useQuizStore } from '@/core/store/quizStore';
+import { Card } from '@/components/ui/Card';
+import { RatingBar } from '@/components/ui/RatingBar';
+import { CircularProgress } from '@/components/ui/CircularProgress';
+import { TouchSafeButton } from '@/components/ui/TouchSafeButton';
+import { ForestBackground } from '@/components/ui/ForestBackground';
+import { FadeIn, ScaleIn, StaggerIn } from '@/components/layout/PageTransition';
+import { CenteredCard } from '@/components/layout/CenteredCard';
+import destinationsData from '@/data/destinations/destinations.json';
 import { motion } from 'framer-motion';
+import {
+  TrophyIcon,
+  SparklesIcon,
+  ShareIcon,
+  LightBulbIcon,
+  InformationCircleIcon,
+} from '@heroicons/react/24/outline';
 
 const destinations = destinationsData.destinations;
 
@@ -56,7 +63,7 @@ export function ResultsPage() {
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <div className="inline-block px-5 py-2 bg-gradient-to-r from-forest-600 to-forest-500 text-white rounded-full text-base font-semibold shadow-forest">
+                  <div className="inline-block px-5 py-2 bg-gradient-to-r from-primary to-forest-500 text-white rounded-full text-base font-semibold shadow-forest">
                     {result.mbti_type}
                   </div>
                 </motion.div>
@@ -76,7 +83,7 @@ export function ResultsPage() {
           {/* 推荐结果 */}
           <FadeIn delay={0.2}>
             <h3 className="text-xl font-bold text-earth-900 mb-4 flex items-center gap-2">
-              <span>🏆</span>
+              <TrophyIcon className="w-6 h-6 text-accent" />
               <span>为你推荐 {result.recommendations.length} 条路线</span>
             </h3>
           </FadeIn>
@@ -102,7 +109,7 @@ export function ResultsPage() {
                         {/* 最佳匹配徽章 */}
                         {index === 0 && (
                           <motion.div
-                            className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-400"
+                            className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-accent to-amber-400"
                             animate={{
                               backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                             }}
@@ -117,15 +124,16 @@ export function ResultsPage() {
                               <div className="flex items-center gap-2 mb-2 flex-wrap">
                                 {index === 0 && (
                                   <motion.span
-                                    className="px-2 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold rounded shadow-sm"
+                                    className="inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-amber-500 to-accent text-white text-xs font-semibold rounded shadow-sm"
                                     animate={{ scale: [1, 1.05, 1] }}
                                     transition={{ duration: 2, repeat: Infinity }}
                                   >
-                                    ⭐ 最佳匹配
+                                    <SparklesIcon className="w-3 h-3" />
+                                    <span>最佳匹配</span>
                                   </motion.span>
                                 )}
                                 {recommendation && recommendation.score >= 9.0 && (
-                                  <span className="px-2 py-1 bg-sunshine-orange text-white text-xs font-semibold rounded">
+                                  <span className="px-2 py-1 bg-accent text-white text-xs font-semibold rounded">
                                     超赞推荐
                                   </span>
                                 )}
@@ -145,7 +153,7 @@ export function ResultsPage() {
                           {/* 体验亮点 */}
                           {recommendation && recommendation.experience && (
                             <motion.div
-                              className="mb-4 p-3 bg-gradient-to-r from-green-50 to-amber-50 rounded-xl border-l-4 border-forest-500"
+                              className="mb-4 p-3 bg-gradient-to-r from-green-50 to-amber-50 rounded-xl border-l-4 border-primary"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: 0.2 }}
@@ -154,8 +162,9 @@ export function ResultsPage() {
                                 <motion.span
                                   animate={{ rotate: [0, 10, -10, 0] }}
                                   transition={{ duration: 2, repeat: Infinity }}
+                                  className="text-base"
                                 >
-                                  ✨
+                                  <SparklesIcon className="w-4 h-4" />
                                 </motion.span>
                                 <span>体验亮点</span>
                               </div>
@@ -166,8 +175,8 @@ export function ResultsPage() {
                           {/* 详细推荐理由 - 可展开 */}
                           {recommendation && recommendation.reason && (
                             <details className="mb-4 group">
-                              <summary className="cursor-pointer text-earth-800 font-semibold flex items-center gap-2 hover:text-forest-600 transition-colors touch-safe">
-                                <span>🤔</span>
+                              <summary className="cursor-pointer text-earth-800 font-semibold flex items-center gap-2 hover:text-primary transition-colors touch-safe">
+                                <InformationCircleIcon className="w-5 h-5" />
                                 <span>为什么适合你？</span>
                                 <span className="ml-auto transition-transform group-open:rotate-180">
                                   ▼
@@ -184,31 +193,52 @@ export function ResultsPage() {
                             </details>
                           )}
 
-                          {/* 关键指标 */}
-                          <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-4">
-                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
-                              <div className="text-sm text-earth-600 mb-2 font-medium">难度等级</div>
-                              <RatingStars rating={dest.difficulty_level} size="sm" />
+                          {/* 关键指标 - 使用 RatingBar 替换五角星 */}
+                          <div className="flex flex-col gap-4 mb-4">
+                            <div className="bg-earth-50 rounded-xl p-4">
+                              <RatingBar
+                                value={dest.difficulty_level}
+                                max={5}
+                                label="难度等级"
+                                color="primary"
+                                size="sm"
+                              />
                             </div>
-                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
-                              <div className="text-sm text-earth-600 mb-2 font-medium">出片率</div>
-                              <RatingStars rating={dest.instagrammability} size="sm" />
+                            <div className="bg-earth-50 rounded-xl p-4">
+                              <RatingBar
+                                value={dest.instagrammability}
+                                max={5}
+                                label="出片率"
+                                color="accent"
+                                size="sm"
+                              />
                             </div>
-                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
-                              <div className="text-sm text-earth-600 mb-2 font-medium">卫生评分</div>
-                              <RatingStars rating={dest.hygiene_score} size="sm" />
+                            <div className="bg-earth-50 rounded-xl p-4">
+                              <RatingBar
+                                value={dest.hygiene_score}
+                                max={5}
+                                label="卫生评分"
+                                color="leaf"
+                                size="sm"
+                              />
                             </div>
-                            <div className="bg-earth-50 rounded-xl p-4 text-center flex flex-col items-center justify-center">
-                              <div className="text-sm text-earth-600 mb-2 font-medium">成熟度</div>
-                              <RatingStars rating={dest.maturation} size="sm" />
+                            <div className="bg-earth-50 rounded-xl p-4">
+                              <RatingBar
+                                value={dest.maturation}
+                                max={5}
+                                label="成熟度"
+                                color="sky"
+                                size="sm"
+                              />
                             </div>
                           </div>
 
                           {/* 温馨提示 */}
                           {rec.warnings.length > 0 && (
                             <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4">
-                              <div className="text-sm font-semibold text-amber-800 mb-2">
-                                💡 温馨提示
+                              <div className="text-sm font-semibold text-amber-800 mb-2 flex items-center gap-2">
+                                <LightBulbIcon className="w-4 h-4" />
+                                <span>温馨提示</span>
                               </div>
                               <ul className="space-y-1">
                                 {rec.warnings.map((warning, i) => (
@@ -256,7 +286,7 @@ export function ResultsPage() {
                 variant="primary"
                 size="md"
                 fullWidth
-                icon={<span className="text-xl">📤</span>}
+                icon={<ShareIcon className="w-5 h-5" />}
               >
                 分享结果
               </TouchSafeButton>

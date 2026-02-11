@@ -1,11 +1,11 @@
-import { useQuizStore } from './store/quizStore';
-import { PageLayout } from './components/layout/PageLayout';
-import { LandingPage } from './components/pages/LandingPage';
-import { MBTIQuiz } from './components/quiz/MBTIQuiz';
-import { SurvivalTest } from './components/quiz/SurvivalTest';
-import { Calculating } from './components/pages/Calculating';
-import { ResultsPage } from './components/pages/ResultsPage';
-import { PageTransition } from './components/layout/PageTransition';
+import { useQuizStore } from '@/core/store/quizStore';
+import { PageLayout } from '@/components/layout/PageLayout';
+import { LandingPage } from '@/pages/LandingPage';
+import { MBTIQuiz } from '@/pages/MBTIQuizPage';
+import { SurvivalTest } from '@/pages/SurvivalTestPage';
+import { Calculating } from '@/pages/CalculatingPage';
+import { ResultsPage } from '@/pages/ResultsPage';
+import { PageTransition } from '@/components/layout/PageTransition';
 import { useMemo } from 'react';
 
 function App() {

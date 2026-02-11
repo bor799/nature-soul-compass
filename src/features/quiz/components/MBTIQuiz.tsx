@@ -1,10 +1,10 @@
-import { useQuizStore } from '../../store/quizStore';
-import { mbtiQuestions } from '../../data/mbtiQuestions';
-import { ProgressBar } from '../ui/ProgressBar';
-import { QuizOptionButton } from '../ui/QuizOptionButton';
-import { ForestBackground } from '../ui/ForestBackground';
-import { FadeIn } from '../layout/PageTransition';
-import { CenteredCard } from '../layout/CenteredCard';
+import { useQuizStore } from '@/core/store/quizStore';
+import { mbtiQuestions } from '@/data/questions/mbtiQuestions';
+import { ProgressBar } from '@/components/ui/ProgressBar';
+import { QuizOptionButton } from '@/components/ui/QuizOptionButton';
+import { ForestBackground } from '@/components/ui/ForestBackground';
+import { FadeIn } from '@/components/layout/PageTransition';
+import { CenteredCard } from '@/components/layout/CenteredCard';
 import { motion } from 'framer-motion';
 
 export function MBTIQuiz() {

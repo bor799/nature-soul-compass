@@ -1,19 +1,15 @@
 import { create } from 'zustand';
-import type { QuizState, MBTIDimension, ToleranceLevel, SurvivalCategory, QuizStage, Destination } from '../lib/types';
-import { mbtiQuestions } from '../data/mbtiQuestions';
-import { survivalQuestions } from '../data/survivalQuestions';
-import destinationsData from '../../data/destinations.json';
-import { calculateMBTIType, calculateMBTIScores } from '../lib/quizEngine';
-import { generateQuizResult } from '../lib/recommendationEngine';
+import type { QuizState, MBTIDimension, ToleranceLevel, SurvivalCategory, QuizStage, Destination } from '@/shared/types';
+import { mbtiQuestions } from '@/data/questions/mbtiQuestions';
+import { survivalQuestions } from '@/data/questions/survivalQuestions';
+import destinationsData from '@/data/destinations/destinations.json';
+import { calculateMBTIType, calculateMBTIScores } from '@/core/engines/quizEngine';
+import { generateQuizResult } from '@/core/engines/recommendationEngine';
 
 // 类型安全的数据导入 - 需要类型断言因为 JSON 数据的类型更宽泛
 const destinations: Destination[] = destinationsData.destinations as Destination[];
 
 interface QuizStore extends QuizState {
-  // Internal state
-  _mbtiAnswers: Map<string, MBTIDimension>;
-  _survivalAnswers: Map<SurvivalCategory, ToleranceLevel>;
-
   // Actions implementation
   setStage: (stage: QuizStage) => void;
   setMBTIQuestion: (index: number) => void;
@@ -25,15 +21,13 @@ interface QuizStore extends QuizState {
 }
 
 export const useQuizStore = create<QuizStore>((set, get) => ({
-  // Initial state
+  // Initial state - 统一使用单一状态变量
   stage: 'landing',
   current_mbti_question: 0,
   current_survival_question: 0,
   mbti_answers: new Map(),
   survival_answers: new Map(),
   result: null,
-  _mbtiAnswers: new Map(),
-  _survivalAnswers: new Map(),
 
   setStage: (stage) => set({ stage }),
 
@@ -43,8 +37,9 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
 
   answerMBTIQuestion: (questionId, value) => {
     const state = get();
-    state._mbtiAnswers.set(questionId, value);
-    set({ _mbtiAnswers: new Map(state._mbtiAnswers) });
+    const newAnswers = new Map(state.mbti_answers);
+    newAnswers.set(questionId, value);
+    set({ mbti_answers: newAnswers });
 
     // Auto advance to next question
     if (state.current_mbti_question < mbtiQuestions.length - 1) {
@@ -57,8 +52,9 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
 
   answerSurvivalQuestion: (category, level) => {
     const state = get();
-    state._survivalAnswers.set(category, level);
-    set({ _survivalAnswers: new Map(state._survivalAnswers) });
+    const newAnswers = new Map(state.survival_answers);
+    newAnswers.set(category, level);
+    set({ survival_answers: newAnswers });
 
     // Auto advance to next question
     if (state.current_survival_question < survivalQuestions.length - 1) {
@@ -73,15 +69,15 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     const state = get();
 
     // Calculate MBTI type
-    const mbtiType = calculateMBTIType(state._mbtiAnswers);
-    const mbtiScores = calculateMBTIScores(state._mbtiAnswers);
+    const mbtiType = calculateMBTIType(state.mbti_answers);
+    const mbtiScores = calculateMBTIScores(state.mbti_answers);
 
     // Build survival tolerance object
     const survivalTolerance = {
-      toilet: state._survivalAnswers.get('toilet') || 2,
-      shower: state._survivalAnswers.get('shower') || 2,
-      bugs: state._survivalAnswers.get('bugs') || 2,
-      fitness: state._survivalAnswers.get('fitness') || 2
+      toilet: state.survival_answers.get('toilet') || 2,
+      shower: state.survival_answers.get('shower') || 2,
+      bugs: state.survival_answers.get('bugs') || 2,
+      fitness: state.survival_answers.get('fitness') || 2
     };
 
     // Generate recommendations
@@ -95,8 +91,6 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     // Update state
     set({
       stage: 'calculating',
-      mbti_answers: new Map(state._mbtiAnswers),
-      survival_answers: new Map(state._survivalAnswers),
       result
     });
 
@@ -112,8 +106,6 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     current_survival_question: 0,
     mbti_answers: new Map(),
     survival_answers: new Map(),
-    result: null,
-    _mbtiAnswers: new Map(),
-    _survivalAnswers: new Map()
+    result: null
   })
 }));

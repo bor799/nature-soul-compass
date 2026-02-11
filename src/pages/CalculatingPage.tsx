@@ -1,15 +1,37 @@
 import { useState, useEffect } from 'react';
-import { ForestBackground } from '../ui/ForestBackground';
-import { FadeIn } from '../layout/PageTransition';
-import { CenteredCard } from '../layout/CenteredCard';
+import { ForestBackground } from '@/components/ui/ForestBackground';
+import { FadeIn } from '@/components/layout/PageTransition';
+import { CenteredCard } from '@/components/layout/CenteredCard';
 import { motion } from 'framer-motion';
+import {
+  LightBulbIcon,
+  HomeIcon,
+  MapIcon,
+  SparklesIcon,
+} from '@heroicons/react/24/outline';
 
 // 计算阶段配置
 const CALCULATING_STAGES = [
-  { progress: 30, text: '分析你的性格类型...', icon: '🧠' },
-  { progress: 60, text: '评估舒适度底线...', icon: '🏕️' },
-  { progress: 90, text: '匹配最佳目的地...', icon: '🗺️' },
-  { progress: 100, text: '准备出发！', icon: '✨' },
+  {
+    progress: 30,
+    text: '分析你的性格类型...',
+    icon: <LightBulbIcon className="w-8 h-8" />
+  },
+  {
+    progress: 60,
+    text: '评估舒适度底线...',
+    icon: <HomeIcon className="w-8 h-8" />
+  },
+  {
+    progress: 90,
+    text: '匹配最佳目的地...',
+    icon: <MapIcon className="w-8 h-8" />
+  },
+  {
+    progress: 100,
+    text: '准备出发！',
+    icon: <SparklesIcon className="w-8 h-8" />
+  },
 ];
 
 export function Calculating() {
@@ -69,7 +91,7 @@ export function Calculating() {
               {/* 内圈 */}
               <div className="absolute inset-4 border-2 border-sky-300 rounded-full" />
               {/* 中心图标 */}
-              <div className="absolute inset-0 flex items-center justify-center text-5xl">
+              <div className="absolute inset-0 flex items-center justify-center text-sky-600">
                 {stage.icon}
               </div>
             </motion.div>
@@ -154,7 +176,7 @@ export function Calculating() {
                   animate={{ opacity: index <= currentStage ? 1 : 0.3 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <span>{s.icon}</span>
+                  <span className="text-base">{s.icon}</span>
                   <span>{s.text}</span>
                   {index === currentStage && (
                     <motion.span

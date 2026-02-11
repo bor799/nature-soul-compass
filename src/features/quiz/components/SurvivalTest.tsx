@@ -1,11 +1,12 @@
-import { useQuizStore } from '../../store/quizStore';
-import { survivalQuestions } from '../../data/survivalQuestions';
-import { ProgressBar } from '../ui/ProgressBar';
-import { QuizOptionButton } from '../ui/QuizOptionButton';
-import { ForestBackground } from '../ui/ForestBackground';
-import { FadeIn } from '../layout/PageTransition';
-import { CenteredCard } from '../layout/CenteredCard';
+import { useQuizStore } from '@/core/store/quizStore';
+import { survivalQuestions } from '@/data/questions/survivalQuestions';
+import { ProgressBar } from '@/components/ui/ProgressBar';
+import { QuizOptionButton } from '@/components/ui/QuizOptionButton';
+import { ForestBackground } from '@/components/ui/ForestBackground';
+import { FadeIn } from '@/components/layout/PageTransition';
+import { CenteredCard } from '@/components/layout/CenteredCard';
 import { motion } from 'framer-motion';
+import { HomeIcon } from '@heroicons/react/24/outline';
 
 export function SurvivalTest() {
   const { current_survival_question, answerSurvivalQuestion, setSurvivalQuestion } = useQuizStore();
@@ -29,11 +30,11 @@ export function SurvivalTest() {
             {/* 标题区域 */}
             <div className="text-center">
               <motion.div
-                className="text-5xl mb-3"
+                className="mb-3 inline-block"
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
-                🏕️
+                <HomeIcon className="w-14 h-14 text-earth-700" />
               </motion.div>
               <h2 className="text-3xl font-bold text-earth-900 mb-2">
                 舒适度测试

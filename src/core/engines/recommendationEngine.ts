@@ -1,5 +1,5 @@
-import type { Destination, MBTIScore, SurvivalTolerance, RecommendationScore, QuizResult, MBTIType } from './types';
-import { mbtiDescriptions } from '../data/mbtiQuestions';
+import type { Destination, MBTIScore, SurvivalTolerance, RecommendationScore, QuizResult, MBTIType } from '@/shared/types';
+import { mbtiDescriptions } from '@/data/questions/mbtiQuestions';
 
 /**
  * 计算用户与目的地的 MBTI 契合度

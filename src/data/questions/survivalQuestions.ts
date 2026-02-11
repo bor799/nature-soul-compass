@@ -1,4 +1,4 @@
-import type { SurvivalQuestion } from '../lib/types';
+import type { SurvivalQuestion } from '@/shared/types';
 
 export const survivalQuestions: SurvivalQuestion[] = [
   {

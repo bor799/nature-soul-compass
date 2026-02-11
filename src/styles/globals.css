@@ -1,23 +1,79 @@
+@import 'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&family=Inter:wght@400;500;600&display=swap';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 基础重置与设计系统应用 */
 @layer base {
+  :root {
+    /* 导入设计常量 - README 规范 */
+    --color-forest-900: #0f3e21;
+    --color-forest-800: #1a5c38;
+    --color-magic-gold: #FFD700;
+    --color-magic-glow: #FFF7B0;
+    --color-cream-50: #F0FDF4;
+    --color-rose-clay: #E17F7F;
+
+    /* 字体家族 - README 规范 */
+    --font-display: 'Noto Serif SC', 'Playfair Display', serif;
+    --font-body: 'Noto Sans SC', 'Inter', sans-serif;
+  }
+
   body {
-    @apply text-earth-900;
+    font-family: var(--font-body);
+    font-size: 16px; /* 最小要求 - README 规范 */
+    line-height: 1.6; /* 正文行高 - README 规范 */
+    color: var(--color-cream-50);
+    background: var(--color-forest-900);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 2rem; /* 32px - README 规范 */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* 24px - README 规范 */
+  }
+
+  /* 触控优化 - iOS HIG 标准 */
+  button, a, [role="button"] {
+    min-height: 48px;
+    min-width: 48px;
   }
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-forest-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-forest-700 transition-colors;
+/* 工具类 - README 规范 */
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
   }
 
-  .card {
-    @apply bg-white rounded-xl shadow-md p-6;
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
   }
 
-  .text-gradient {
-    @apply bg-gradient-to-r from-forest-600 to-forest-800 bg-clip-text text-transparent;
+  /* 底部安全区 - README 规范 */
+  .pb-safe {
+    padding-bottom: 32px;
+  }
+
+  /* 最小文字尺寸 - README 规范 */
+  .text-min {
+    font-size: 16px;
+  }
+
+  .text-caption-min {
+    font-size: 12px;
   }
 }

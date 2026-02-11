@@ -1,4 +1,4 @@
-import type { MBTIScore, MBTIType, MBTIDimension } from './types';
+import type { MBTIScore, MBTIType, MBTIDimension } from '@/shared/types';
 
 /**
  * 计算 MBTI 类型

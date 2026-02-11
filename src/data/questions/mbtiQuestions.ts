@@ -1,4 +1,4 @@
-import type { MBTIQuestion } from '../lib/types';
+import type { MBTIQuestion } from '@/shared/types';
 
 export const mbtiQuestions: MBTIQuestion[] = [
   // ==================== I vs E (内向 vs 外向) ====================
