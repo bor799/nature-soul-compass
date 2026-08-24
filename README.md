@@ -1,197 +1,62 @@
-# 🌲 山野灵感罗盘 (Nature Soul Compass)
+# 山野灵感罗盘
 
-> **为 18-40 岁女性“进阶小白”量身打造的沉浸式徒步推荐引擎。** > _Theme: Wizard of Oz (绿野仙踪) | Mobile-First | Privacy-Focused_
+> **A lightweight hiking recommendation experiment built from user context, not route rankings.**
 
-## 📖 项目概述
+徒步推荐通常从「热门路线」开始。这个项目换了一个问题：**一个人的性格、体能和体验底线，能不能成为路线推荐的第一层上下文？**
 
-本项目是一个纯前端 React 应用，旨在通过 MBTI 性格测试与生存底线评估，帮助年轻女性徒步者找到“既有安全感又能出大片”的理想路线。
+在线体验：https://nature-soul-compass-v2.vercel.app
 
-设计风格致敬**“绿野仙踪”**：以深邃的森林绿为基调，金色的勇气勋章为点缀，营造一种神秘、治愈且充满探索欲的视觉体验。
+## 产品判断
 
-## 🎨 设计规范与用户体验指南 (Design System)
+目标用户不是专业户外玩家，而是想开始进阶、同时在意安全感与体验质量的徒步者。系统先处理不可妥协的底线，再讨论偏好：
 
-**核心用户画像**：18-40 岁女性，审美在线，关注体验细节，使用设备以移动端为主。
-
-**核心体验目标**：高可读性、操作无压力、视觉愉悦感、情感共鸣。
-
-### 1. 色彩系统 (Color Palette)
-
-我们摒弃纯黑纯白，采用自然的深色系以减少夜间浏览的视觉疲劳。
-
-|   |   |   |   |
-|---|---|---|---|
-|**语义**|**颜色名称**|**Hex 值**|**用途说明**|
-|**背景基调**|`forest-900`|`#0f3e21`|页面主背景，建议配合 radial-gradient 营造景深|
-|**卡片底色**|`forest-glass`|`rgba(255,255,255,0.1)`|玻璃态卡片背景，需配合 `backdrop-blur-md`|
-|**主强调色**|`magic-gold`|`#FFD700`|CTA 按钮、选中状态、高光时刻（寓意勇气与奖励）|
-|**辅助光晕**|`magic-glow`|`#FFF7B0`|文字发光效果、次级高亮|
-|**正文文字**|`cream-50`|`#F0FDF4`|替代纯白，柔和护眼|
-|**警示/错误**|`rose-clay`|`#E17F7F`|柔和的陶土红，避免刺眼的鲜红|
-
-### 2. 排版与字体规范 (Typography)
-
-针对目标用户群体，字体需兼顾**优雅感（标题）与易读性（正文）**。
-
-- **Font Family**:
-    
-    - **Display (标题)**: `Noto Serif SC`, `Playfair Display` (衬线体，传递经典与神秘感)。
-        
-    - **Body (正文)**: `Noto Sans SC`, `Inter` (无衬线体，确保小屏阅读清晰)。
-        
-- **字号限制 (Mobile Standards)**:
-    
-    - **H1 (主标题)**: `32px` (2rem) - 醒目，建立视觉焦点。
-        
-    - **H2 (模块标题)**: `24px` (1.5rem) - 清晰的分区标识。
-        
-    - **Body (正文)**: **不得小于 `16px`**。女性用户偏好舒适的阅读体验，避免眯眼。
-        
-    - **Caption (辅助)**: 最低 `12px`，仅用于版权或极次要标签。
-        
-    - **行高 (Line-height)**: 正文行高统一设定为 `1.6`，段落间距 `1.5em`，营造呼吸感。
-        
-
-### 3. 布局与交互限制 (Layout & Interaction)
-
-#### 触控区域 (Touch Targets)
-
-考虑到女性用户可能留长指甲或单手操作，所有交互元素必须符合以下标准：
-
-- **最小点击高度**: `48px` (符合 iOS 人机交互指南)。
-    
-- **按钮内边距**: 水平方向至少 `24px`。
-    
-- **安全区**: 底部留出 `pb-safe` 或至少 `32px` 的空白，避免与手机 Home 条冲突。
-    
-
-#### 组件风格 (Component Style)
-
-- **GlassCard (玻璃卡片)**:
-    
-    - `border: 1px solid rgba(255,255,255,0.15)`
-        
-    - `border-radius: 16px` (圆润的边角更具亲和力)
-        
-    - `shadow: 0 8px 32px rgba(0,0,0,0.2)`
-        
-- **MagicButton (魔法按钮)**:
-    
-    - 默认状态：深绿底 + 金色边框。
-        
-    - 激活状态：金色填充 + 深绿文字 + 外发光 `box-shadow: 0 0 15px rgba(255, 215, 0, 0.4)`。
-        
-
-## 🛠 技术实现 (Development)
-
-### 技术栈
-
-- **Core**: React 18 + TypeScript + Vite
-    
-- **Styling**: Tailwind CSS (配合自定义配置) + CSS Modules (复杂动效)
-    
-- **State**: Zustand (轻量级，支持持久化)
-    
-- **Routing**: React Router (或条件渲染)
-    
-
-### 快速启动
-
-1. **安装依赖**:
-    
-    ```
-    npm install
-    ```
-    
-2. **配置 Tailwind (Crucial)**:
-    
-    确保 `tailwind.config.js` 包含以下主题扩展：
-    
-    ```
-    // tailwind.config.js
-    theme: {
-      extend: {
-        colors: {
-          forest: { 900: '#0f3e21', 800: '#1a5c38' },
-          magic: { gold: '#FFD700', glow: '#FFF7B0' },
-        },
-        fontFamily: {
-          serif: ['"Noto Serif SC"', 'serif'],
-          sans: ['"Inter"', 'sans-serif'],
-        },
-        backgroundImage: {
-          'forest-gradient': 'radial-gradient(circle at center, #1a5c38 0%, #0f3e21 100%)',
-        }
-      }
-    }
-    ```
-    
-3. **启动开发环境**:
-    
-    ```
-    npm run dev
-    ```
-    
-
-## 🧠 推荐算法逻辑 (The "Compass" Core)
-
-为了给“进阶小白”提供最靠谱的建议，我们的算法包含**硬性门槛**和**加权评分**两部分。
-
-### 1. 硬性过滤 (Hard Filters)
-
-如果用户的生理/心理底线低于路线要求，该路线直接淘汰（Score = 0）。
-
-- **卫生要求**: 用户无法接受旱厕 vs 只有旱厕的路线。
-    
-- **体能要求**: 用户体能 "菜鸟" vs 爬升 > 1000m 的路线。
-    
-
-### 2. 加权公式 (Scoring Model)
-
-```
-FinalScore = 
-  (MBTI_Match * 0.40) +       // 性格契合度 (I/E, N/S, T/F, J/P 维度匹配)
-  (Survival_Match * 0.30) +   // 舒适度匹配 (住宿、洗澡、如厕便利度)
-  (Maturity_Bonus * 0.15) +   // 路线成熟度 (小白通常偏好成熟路线)
-  (Insta_Bonus * 0.10) +      // 出片率 (女性用户核心诉求之一)
-  (Social_Penalty * 0.05)     // 社交压力修正
+```text
+用户上下文
+  ├─ MBTI 偏好
+  ├─ 体能与经验
+  ├─ 卫生 / 住宿 / 安全底线
+  └─ 社交与风景偏好
+          ↓
+      硬性过滤
+          ↓
+      加权匹配
+          ↓
+  推荐路线 + 匹配原因
 ```
 
-## 📂 项目结构
+## 为什么先过滤再评分
 
-```
-src/
-├── components/
-│   ├── ui/                    # 原子组件 (遵循设计规范)
-│   │   ├── GlassCard.tsx      # 核心容器
-│   │   ├── MagicButton.tsx    # 核心交互
-│   │   └── ProgressBar.tsx    # 进度指示
-│   ├── layout/
-│   │   └── ForestLayout.tsx   # 全局渐变背景封装
-│   ├── quiz/                  # 问答业务组件
-│   └── results/               # 结果页组件
-├── data/
-│   ├── destinations.json      # 目的地数据库
-│   └── questions.ts           # 题库配置
-├── lib/
-│   ├── recommendation.ts      # 推荐算法引擎
-│   └── utils.ts               # 工具函数
-├── store/
-│   └── useAppStore.ts         # Zustand 状态管理
-└── styles/
-    └── globals.css            # 全局样式重置
-```
+如果用户无法接受某项生存条件，再高的风景分也不应该把路线推到前面。因此推荐分两层：
 
-## 📝 贡献指南 (Adding Destinations)
+1. **Hard Filters**：体能、安全、卫生等底线不满足，直接排除；
+2. **Preference Match**：在可接受路线中，再比较性格、成熟度、景观和社交压力。
 
-在 `src/data/destinations.json` 中添加新路线时，请务必填写以下针对女性用户的关键字段：
+这比「所有特征加权后取最高分」更符合真实选择过程。
 
-```
-{
-  "hygiene_score": 4,          // 卫生指数 (1-5): 1=野外解决, 5=星级卫浴
-  "instagrammability": 5,      // 出片指数 (1-5): 决定推荐权重
-  "safety_level": 5,           // 安全感 (1-5): 是否有信号、领队、成熟路迹
-  "social_pressure": 2         // 社交压力: 1=社恐天堂, 5=像赶集一样
-}
+## 当前实现
+
+- React + TypeScript + Vite；
+- Zustand 管理问答状态；
+- 本地推荐算法，不上传用户答案；
+- 移动端优先的问答与结果体验；
+- 可部署为静态站点。
+
+## 本地运行
+
+```bash
+npm install
+npm run dev
+npm run build
 ```
 
-**Made with 💚 & ✨ for every soul seeking the wild.**
+2026-08-24 合并 V1/V2 历史后重新构建通过。原始版本保留在 `v1-legacy` tag，V2 实现成为当前主线。
+
+## 边界
+
+- MBTI 只作为偏好入口，不是人格诊断；
+- 路线数据是产品原型，不替代实时天气、开放状态和专业安全判断；
+- 推荐结果仍需要用户根据当日条件做最终决定。
+
+## My role
+
+我负责用户画像、体验底线、推荐逻辑和产品叙事；AI 负责把判断快速实现为可运行的前端产品。这个项目保留了我对徒步、旅行和产品设计的个人兴趣。
