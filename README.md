@@ -1,53 +1,62 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 山野灵感罗盘
 
-# Nature Soul Compass (山野灵感罗盘)
+> **A lightweight hiking recommendation experiment built from user context, not route rankings.**
 
-A React + Vite hiking recommendation app that suggests hiking destinations based on your MBTI personality type.
+徒步推荐通常从「热门路线」开始。这个项目换了一个问题：**一个人的性格、体能和体验底线，能不能成为路线推荐的第一层上下文？**
 
-## Features
+在线体验：https://nature-soul-compass-v2.vercel.app
 
-- **MBTI-based Recommendations**: Get personalized hiking suggestions based on your personality type
-- **Local Algorithm**: All recommendations are computed client-side, no API calls required
-- **Modern Tech Stack**: Built with React, TypeScript, Vite, and Tailwind CSS
+## 产品判断
 
-## Run Locally
+目标用户不是专业户外玩家，而是想开始进阶、同时在意安全感与体验质量的徒步者。系统先处理不可妥协的底线，再讨论偏好：
 
-**Prerequisites:** Node.js
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Build for production:
-   ```bash
-   npm run build
-   ```
-
-## Project Structure
-
-```
-├── components/     # React components
-├── data/          # Hiking destination data
-├── lib/           # Recommendation algorithm
-└── types.ts       # TypeScript type definitions
+```text
+用户上下文
+  ├─ MBTI 偏好
+  ├─ 体能与经验
+  ├─ 卫生 / 住宿 / 安全底线
+  └─ 社交与风景偏好
+          ↓
+      硬性过滤
+          ↓
+      加权匹配
+          ↓
+  推荐路线 + 匹配原因
 ```
 
-## Deployment
+## 为什么先过滤再评分
 
-This app is a static site that can be deployed to any hosting service:
-- AI Builder (Koyeb)
-- Vercel
-- Netlify
-- GitHub Pages
+如果用户无法接受某项生存条件，再高的风景分也不应该把路线推到前面。因此推荐分两层：
 
-## License
+1. **Hard Filters**：体能、安全、卫生等底线不满足，直接排除；
+2. **Preference Match**：在可接受路线中，再比较性格、成熟度、景观和社交压力。
 
-MIT
+这比「所有特征加权后取最高分」更符合真实选择过程。
+
+## 当前实现
+
+- React + TypeScript + Vite；
+- Zustand 管理问答状态；
+- 本地推荐算法，不上传用户答案；
+- 移动端优先的问答与结果体验；
+- 可部署为静态站点。
+
+## 本地运行
+
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+2026-08-24 合并 V1/V2 历史后重新构建通过。原始版本保留在 `v1-legacy` tag，V2 实现成为当前主线。
+
+## 边界
+
+- MBTI 只作为偏好入口，不是人格诊断；
+- 路线数据是产品原型，不替代实时天气、开放状态和专业安全判断；
+- 推荐结果仍需要用户根据当日条件做最终决定。
+
+## My role
+
+我负责用户画像、体验底线、推荐逻辑和产品叙事；AI 负责把判断快速实现为可运行的前端产品。这个项目保留了我对徒步、旅行和产品设计的个人兴趣。
