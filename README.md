@@ -1,10 +1,16 @@
+<div align="center">
+
 # 山野灵感罗盘
 
-> **A lightweight hiking recommendation experiment built from user context, not route rankings.**
+**从你是谁出发推荐路线，而不是从热门榜单出发。**
+
+*A lightweight hiking recommendation experiment built from user context, not route rankings.*
+
+**[在线体验 →](https://nature-soul-compass-v2.vercel.app)**
+
+</div>
 
 徒步推荐通常从「热门路线」开始。这个项目换了一个问题：**一个人的性格、体能和体验底线，能不能成为路线推荐的第一层上下文？**
-
-在线体验：https://nature-soul-compass-v2.vercel.app
 
 ## 产品判断
 
